@@ -62,7 +62,7 @@ todo-app/
 
 1. Clone the repository to your local system:
    ```bash
-   git clone https://github.com/[YOUR_USERNAME]/todo-app.git
+   git clone https://github.com/JayanthKumarChinthakindi/todo-app.git
    ```
 2. Open the project folder:
    ```bash
@@ -72,5 +72,5 @@ todo-app/
 
 ## Live Demo
 
-- **GitHub Repository**: [GitHub Repository URL](https://github.com/[YOUR_USERNAME]/todo-app)
-- **Netlify Live Site**: [Netlify Live Site URL](https://[YOUR_SUBDOMAIN].netlify.app)
+- **GitHub Repository**: [GitHub Repository](https://github.com/JayanthKumarChinthakindi/todo-app)
+- **Netlify Live Site**: [TaskFlow Live Site](https://jayanth-taskflow.netlify.app)

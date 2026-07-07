@@ -20,3 +20,6 @@ desktop.ini
 
 # Local Testing Scripts
 server.js
+
+# Local Netlify folder
+.netlify
