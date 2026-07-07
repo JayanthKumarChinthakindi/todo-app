@@ -17,18 +17,6 @@ TaskFlow is a modern, responsive, and high-fidelity card-based To-Do application
 - **LocalStorage**: Auto-save and restore tasks list and theme choices on page reload.
 - **Keyboard Shortcuts**: Accessible keyboard support, allowing task creations by hitting `Enter`.
 - **Responsive Design**: Mobile-first responsive styling optimized across narrow viewports, tablets, and wide screens.
-
-## Screenshots
-
-### Home Page
-`[Place Home Page screenshot here]`
-
-### Dark Mode
-`[Place Dark Mode screenshot here]`
-
-### Mobile View
-`[Place Mobile View screenshot here]`
-
 ## Folder Structure
 
 ```text
