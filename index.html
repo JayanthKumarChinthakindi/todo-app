@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage your tasks efficiently with TaskFlow - a premium, fully featured To-Do application built with modern web technologies.">
+  <title>TaskFlow - Premium To-Do App</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <!-- App Shell -->
+  <div class="app-container">
+    
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-brand">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h1>TaskFlow</h1>
+      </div>
+      <button id="themeToggle" class="btn-icon" aria-label="Toggle dark/light theme">
+        <!-- Sun Icon (for Dark Mode state) -->
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+        <!-- Moon Icon (for Light Mode state) -->
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      
+      <!-- Stats Dashboard -->
+      <section class="stats-dashboard" aria-label="Task Statistics">
+        <div class="stat-card total-tasks">
+          <div class="stat-info">
+            <span class="stat-label">Total Tasks</span>
+            <span id="totalCounter" class="stat-value">0</span>
+          </div>
+          <div class="stat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M3 20v-8a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v8"/><path d="M3 10V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6"/><path d="M14 20v-4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v4"/></svg>
+          </div>
+        </div>
+        
+        <div class="stat-card pending-tasks">
+          <div class="stat-info">
+            <span class="stat-label">Pending</span>
+            <span id="pendingCounter" class="stat-value">0</span>
+          </div>
+          <div class="stat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+        </div>
+        
+        <div class="stat-card completed-tasks">
+          <div class="stat-info">
+            <span class="stat-label">Completed</span>
+            <span id="completedCounter" class="stat-value">0</span>
+          </div>
+          <div class="stat-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Task Creator Form -->
+      <section class="creator-section">
+        <form id="taskForm" class="task-form" novalidate>
+          <div class="form-row-main">
+            <input type="text" id="taskInput" placeholder="What needs to be done today?" autocomplete="off" required aria-label="Task title">
+            <button type="submit" class="btn-primary">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <span>Add Task</span>
+            </button>
+          </div>
+          
+          <div class="form-row-secondary">
+            <!-- Priority selector -->
+            <div class="input-group">
+              <label for="prioritySelect">Priority</label>
+              <div class="select-wrapper">
+                <select id="prioritySelect">
+                  <option value="Low">Low</option>
+                  <option value="Medium" selected>Medium</option>
+                  <option value="High">High</option>
+                </select>
+                <svg class="select-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            
+            <!-- Due Date -->
+            <div class="input-group">
+              <label for="dueDateInput">Due Date</label>
+              <input type="date" id="dueDateInput">
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Search & Filters Container -->
+      <section class="controls-section">
+        <div class="search-bar">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" placeholder="Search tasks..." aria-label="Search tasks">
+          <button id="clearSearch" class="btn-clear-search hidden" aria-label="Clear search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <div class="filters-toolbar">
+          <div class="filter-group">
+            <button class="btn-filter active" data-filter="all">All</button>
+            <button class="btn-filter" data-filter="pending">Pending</button>
+            <button class="btn-filter" data-filter="completed">Completed</button>
+          </div>
+          <button id="clearCompleted" class="btn-text-danger">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+            <span>Clear Completed</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Task List Area -->
+      <section class="task-list-section">
+        <ul id="taskList" class="task-list">
+          <!-- Dynamic task items inserted here -->
+        </ul>
+        
+        <!-- Empty State Container -->
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-illustration">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" width="160" height="120">
+              <defs>
+                <linearGradient id="illGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.15" />
+                  <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.03" />
+                </linearGradient>
+              </defs>
+              <rect x="10" y="10" width="220" height="160" rx="16" fill="url(#illGrad)" stroke="var(--border)" stroke-width="2" stroke-dasharray="6 4" />
+              <!-- Clipboard -->
+              <rect x="90" y="40" width="60" height="80" rx="8" fill="var(--card-bg)" stroke="var(--border)" stroke-width="2" />
+              <!-- Clip -->
+              <path d="M105 40h30a5 5 0 0 0 5-5v-5a5 5 0 0 0-5-5h-30a5 5 0 0 0-5 5v5a5 5 0 0 0 5 5z" fill="var(--text-secondary)" />
+              <!-- Lines -->
+              <line x1="105" y1="65" x2="135" y2="65" stroke="var(--border)" stroke-width="3" stroke-linecap="round" />
+              <line x1="105" y1="80" x2="135" y2="80" stroke="var(--border)" stroke-width="3" stroke-linecap="round" />
+              <line x1="105" y1="95" x2="125" y2="95" stroke="var(--border)" stroke-width="3" stroke-linecap="round" />
+              <!-- Checkmark Circle -->
+              <circle cx="160" cy="115" r="16" fill="var(--success)" opacity="0.9" />
+              <path d="m154 115 4 4 8-8" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <h3 id="emptyStateTitle">Get started with a clean slate</h3>
+          <p id="emptyStateText">Add some tasks or configure your schedule to organize your day.</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>&copy; 2026 TaskFlow. Crafted with pure HTML, CSS, and JavaScript.</p>
+    </footer>
+
+  </div>
+
+  <!-- Custom Delete Confirmation Dialog (Modal) -->
+  <div id="confirmModal" class="modal-overlay hidden" aria-hidden="true" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-alert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+        </div>
+        <h2 id="modalTitle">Delete Task</h2>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this task? This action cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button id="cancelDeleteBtn" class="btn-secondary">Cancel</button>
+        <button id="confirmDeleteBtn" class="btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Application Script -->
+  <script src="js/script.js"></script>
+</body>
+</html>
